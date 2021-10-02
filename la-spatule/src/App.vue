@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="d-flex flex-column min-vh-100">
     <Header />
     <home-page />
     <Footer />
@@ -19,7 +19,7 @@ export default {
 @import "./assets/scss/fonts.scss";
 @import "./assets/scss/colors.scss";
 @import "./assets/scss/variables.scss";
-body {
+#app {
   background-color: $mainBackgroundColor;
 }
 </style>

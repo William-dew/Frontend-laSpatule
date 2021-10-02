@@ -24,5 +24,9 @@ export default {
   box-shadow: 1px 1px 13px #500a0a;
   color: $textlight;
   font-weight: 900;
+  position:sticky;
+  top:0;
+  z-index: 100;
+
 }
 </style>
