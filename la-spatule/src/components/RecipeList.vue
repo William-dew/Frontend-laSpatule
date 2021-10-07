@@ -2,17 +2,36 @@
   <main>
     <h1>RECETTES</h1>
     <b-card-group deck>
-      <recipe-excerpt />
-      <recipe-excerpt />
-      <recipe-excerpt />
+      <recipe-excerpt
+        v-for="recipe in recipeListData"
+        :key="recipe.id"
+        :title="recipe.title.rendered"
+        :picture="recipe.featured_media_url"
+        :date="recipe.date"
+      />
     </b-card-group>
   </main>
 </template>
 
 <script>
 import RecipeExcerpt from "./RecipeExcerpt.vue";
+import axios from "axios";
+
 export default {
   components: { RecipeExcerpt },
+  data() {
+    return {
+      recipeListData: [],
+    };
+  },
+  created: function () {
+    axios
+      .get("https://wdewailly.me/Backend-laSpatule/wp-json/wp/v2/recipe")
+      .then((response) => {
+        console.log(response.data);
+        this.recipeListData = response.data;
+      });
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="d-flex flex-column min-vh-100">
     <Header />
-    <home-page />
+    <router-view></router-view>
     <Footer />
   </div>
 </template>
@@ -9,9 +9,8 @@
 <script>
 import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
-import HomePage from "./views/HomePage.vue";
 export default {
-  components: { Header, Footer, HomePage },
+  components: { Header, Footer },
 };
 </script>
 
