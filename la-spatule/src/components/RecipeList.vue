@@ -7,7 +7,7 @@
         :key="recipe.id"
         :title="recipe.title.rendered"
         :picture="recipe.featured_media_url"
-        :date="recipe.date"
+        :date="recipe.formatted_date"
       />
     </b-card-group>
   </main>
@@ -24,6 +24,7 @@ export default {
       recipeListData: [],
     };
   },
+  methods: {},
   created: function () {
     axios
       .get("https://wdewailly.me/Backend-laSpatule/wp-json/wp/v2/recipe")
