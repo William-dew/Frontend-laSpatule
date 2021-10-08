@@ -5,6 +5,7 @@
       <recipe-excerpt
         v-for="recipe in recipeListData"
         :key="recipe.id"
+        :recipeId="recipe.id"
         :title="recipe.title.rendered"
         :picture="recipe.featured_media_url"
         :date="recipe.formatted_date"
@@ -16,7 +17,7 @@
 
 <script>
 import RecipeExcerpt from "./RecipeExcerpt.vue";
-import RecipeService from "../services/RecipeService"
+import RecipeService from "../services/RecipeService";
 
 export default {
   components: { RecipeExcerpt },
@@ -27,7 +28,9 @@ export default {
   },
   methods: {},
   created: function () {
-    RecipeService.getRecipeList().then((response) => this.recipeListData = response.data)
+    RecipeService.getRecipeList().then(
+      (response) => (this.recipeListData = response.data)
+    );
   },
 };
 </script>

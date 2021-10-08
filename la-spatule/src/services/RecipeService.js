@@ -4,5 +4,8 @@ import { apiClient } from "./ApiClient"
 export default {
     getRecipeList: function () {
         return apiClient.get('recipe')
+    },
+    getRecipe: function (id) {
+        return apiClient.get('recipe/' + id)
     }
 }

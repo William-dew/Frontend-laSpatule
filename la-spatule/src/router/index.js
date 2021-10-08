@@ -7,20 +7,26 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "HomePage",
+    name: "homePage",
     component: HomePage,
   },
   {
     path: "/Inscription",
-    name: "RegisterForm",
+    name: "registerForm",
     component: () =>
       import("../views/RegisterForm.vue"),
   },
   {
     path: "/Connexion",
-    name: "ConnectionForm",
+    name: "connectionForm",
     component: () =>
       import("../views/ConnectionForm.vue"),
+  },
+  {
+    path: "/Recette/:id",
+    name: "recipePage",
+    component: () =>
+      import("../views/RecipePage.vue"),
   },
 ];
 
