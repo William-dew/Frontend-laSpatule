@@ -8,6 +8,7 @@
         :title="recipe.title.rendered"
         :picture="recipe.featured_media_url"
         :date="recipe.formatted_date"
+        :sous-titre="recipe.meta.sous_titre[0]"
       />
     </b-card-group>
   </main>
@@ -15,7 +16,7 @@
 
 <script>
 import RecipeExcerpt from "./RecipeExcerpt.vue";
-import axios from "axios";
+import RecipeService from "../services/RecipeService"
 
 export default {
   components: { RecipeExcerpt },
@@ -26,12 +27,7 @@ export default {
   },
   methods: {},
   created: function () {
-    axios
-      .get("https://wdewailly.me/Backend-laSpatule/wp-json/wp/v2/recipe")
-      .then((response) => {
-        console.log(response.data);
-        this.recipeListData = response.data;
-      });
+    RecipeService.getRecipeList().then((response) => this.recipeListData = response.data)
   },
 };
 </script>

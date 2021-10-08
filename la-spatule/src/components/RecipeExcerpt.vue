@@ -1,6 +1,6 @@
 <template>
-  <b-card :title="title" :img-src="picture" img-alt="Photo du plat" img-top>
-    <b-card-text> Une recette délicieuse pour grands et petits </b-card-text>
+  <b-card :title="title" :img-src="picture" img-alt="Photo du plat" img-top :sub-title="sousTitre">
+    <b-card-text></b-card-text>
     <template #footer>
       <small class="text-muted">Ajouté le {{ date }}</small>
     </template>
@@ -23,6 +23,10 @@ export default {
       type: Date,
       default: "",
     },
+    sousTitre:{
+      type: String,
+      default:"",
+    }
   },
 };
 </script>
