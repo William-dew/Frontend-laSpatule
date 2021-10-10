@@ -1,11 +1,10 @@
 <template>
-  <article>
-    <router-link :to="{ name: 'recipePage', params:{id:recipeId} }">
+  <router-link :to="{ name: 'recipePage', params: { id: recipeId } }">
+    <article>
       <b-card
         :title="title"
         :img-src="picture"
         img-alt="Photo du plat"
-        img-top
         :sub-title="sousTitre"
       >
         <b-card-text></b-card-text>
@@ -13,8 +12,8 @@
           <small class="text-muted">Ajouté le {{ date }}</small>
         </template>
       </b-card>
-    </router-link>
-  </article>
+    </article>
+  </router-link>
 </template>
 
 <script>
@@ -23,7 +22,7 @@ export default {
   props: {
     recipeId: {
       type: Number,
-      default:20
+      default: 20,
     },
     title: {
       type: String,
@@ -45,5 +44,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

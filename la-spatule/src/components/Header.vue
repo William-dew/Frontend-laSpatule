@@ -14,7 +14,7 @@ export default {
   },
 };
 </script>
-<style  scoped lang="scss">
+<style scoped lang="scss">
 @import "../assets/scss/colors.scss";
 .header {
   display: flex;
@@ -24,9 +24,8 @@ export default {
   box-shadow: 1px 1px 13px #500a0a;
   color: $textlight;
   font-weight: 900;
-  position:sticky;
-  top:0;
+  position: sticky;
+  top: 0;
   z-index: 100;
-
 }
 </style>

@@ -13,20 +13,17 @@ const routes = [
   {
     path: "/Inscription",
     name: "registerForm",
-    component: () =>
-      import("../views/RegisterForm.vue"),
+    component: () => import("../views/RegisterForm.vue"),
   },
   {
     path: "/Connexion",
     name: "connectionForm",
-    component: () =>
-      import("../views/ConnectionForm.vue"),
+    component: () => import("../views/ConnectionForm.vue"),
   },
   {
     path: "/Recette/:id",
     name: "recipePage",
-    component: () =>
-      import("../views/RecipePage.vue"),
+    component: () => import("../views/RecipePage.vue"),
   },
 ];
 

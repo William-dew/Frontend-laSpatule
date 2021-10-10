@@ -20,5 +20,9 @@ export default {
 @import "./assets/scss/variables.scss";
 #app {
   background-color: $mainBackgroundColor;
+  a {
+    text-decoration: none;
+    color: $textdark;
+  }
 }
 </style>
