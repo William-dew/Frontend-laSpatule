@@ -12,8 +12,8 @@ const routes = [
   },
   {
     path: "/Inscription",
-    name: "registerForm",
-    component: () => import("../views/RegisterForm.vue"),
+    name: "register",
+    component: () => import("../views/Register.vue"),
   },
   {
     path: "/Connexion",

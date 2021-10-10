@@ -1,6 +1,15 @@
 <template>
-  <header class="header">
-    <h1>La Spatule</h1>
+  <header :class="{ isConnected: 'header' }">
+    <h1 v-if="isConnected">La Spatule</h1>
+    <div v-else>
+      <div class="d-flex justify-content-between">
+        <h1>La Spatule</h1>
+        <b-list-group-item>
+          <b-avatar square button @click="onClick"></b-avatar>
+          {{ username }}
+        </b-list-group-item>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -8,13 +17,26 @@
 export default {
   name: "Header",
   data() {
-    return {
-      isConnected: true,
-    };
+    return {};
+  },
+  computed: {
+    isConnected() {
+      // on récupère l'état de connexion (booléen) depuis le state
+      return this.$store.state.isUserConnected;
+    },
+    username() {
+      // return this.$store.state.username;
+      return "william";
+    },
+  },
+  methods: {
+    onClick() {
+      console.log("coucou");
+    },
   },
 };
 </script>
-<style scoped lang="scss">
+<style  lang="scss">
 @import "../assets/scss/colors.scss";
 .header {
   display: flex;
@@ -27,5 +49,6 @@ export default {
   position: sticky;
   top: 0;
   z-index: 100;
+  height: 4rem;
 }
 </style>
