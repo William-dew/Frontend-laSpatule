@@ -1,17 +1,15 @@
 <template>
   <main>
     <h1>RECETTES</h1>
-    <b-card-group deck>
-      <recipe-excerpt
-        v-for="recipe in recipeListData"
-        :key="recipe.id"
-        :recipeId="recipe.id"
-        :title="recipe.title.rendered"
-        :picture="recipe.featured_media_url"
-        :date="recipe.formatted_date"
-        :sous-titre="recipe.meta.sous_titre[0]"
-      />
-    </b-card-group>
+    <recipe-excerpt
+      v-for="recipe in recipeListData"
+      :key="recipe.id"
+      :recipeId="recipe.id"
+      :title="recipe.title.rendered"
+      :picture="recipe.featured_media_url"
+      :date="recipe.formatted_date"
+      :sous-titre="recipe.meta.sous_titre[0]"
+    />
   </main>
 </template>
 

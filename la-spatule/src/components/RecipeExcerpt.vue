@@ -1,18 +1,14 @@
 <template>
-  <router-link :to="{ name: 'recipePage', params: { id: recipeId } }">
-    <article>
-      <b-card
-        :title="title"
-        :img-src="picture"
-        img-alt="Photo du plat"
-        :sub-title="sousTitre"
-      >
-        <b-card-text></b-card-text>
-        <template #footer>
-          <small class="text-muted">Ajouté le {{ date }}</small>
-        </template>
-      </b-card>
-    </article>
+  <router-link
+    class="excerpt"
+    :to="{ name: 'recipePage', params: { id: recipeId } }"
+  >
+    <div
+      class="excerpt__card"
+      :style="{
+        backgroundImage: `url(${picture})`,
+      }"
+    ></div>
   </router-link>
 </template>
 
@@ -44,4 +40,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style  scoped lang="scss">
+.excerpt {
+  &__card {
+    margin-bottom: 1rem;
+    height: 300px;
+    background-size: cover;
+    border-radius: 10px;
+  }
+}
+</style>

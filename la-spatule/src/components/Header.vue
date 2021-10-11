@@ -1,15 +1,6 @@
 <template>
-  <header :class="{ isConnected: 'header' }">
-    <h1 v-if="isConnected">La Spatule</h1>
-    <div v-else>
-      <div class="d-flex justify-content-between">
-        <h1>La Spatule</h1>
-        <b-list-group-item>
-          <b-avatar square button @click="onClick"></b-avatar>
-          {{ username }}
-        </b-list-group-item>
-      </div>
-    </div>
+  <header class="header">
+    <h1 class="header__title">La Spatule</h1>
   </header>
 </template>
 
@@ -36,19 +27,19 @@ export default {
   },
 };
 </script>
-<style  lang="scss">
+<style scoped lang="scss">
 @import "../assets/scss/colors.scss";
 .header {
+  height: 3.5rem;
+  background-color: $colorHeader;
   display: flex;
   justify-content: center;
-  background-color: $primaryBackgroundColor;
-  padding: 1em;
-  box-shadow: 1px 1px 13px #500a0a;
-  color: $textlight;
-  font-weight: 900;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  height: 4rem;
+  align-items: center;
+  box-shadow: 0px 4px 10px 0px black;
+  border-radius: 0 0 5px 5px;
+
+  &__title {
+    color: $colorTextLight;
+  }
 }
 </style>

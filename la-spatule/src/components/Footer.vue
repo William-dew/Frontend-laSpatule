@@ -1,36 +1,51 @@
 <template>
   <footer class="footer">
-    <b-nav pills align="center">
-      <b-nav-item exact-active-class="active" to="/"
-        >Liste des recettes</b-nav-item
+    <nav class="footer__nav">
+      <router-link :to="{ name: 'homePage' }">Liste des recettes</router-link>
+      <router-link v-if="!isConnected" :to="{ name: 'register' }"
+        >Inscription</router-link
       >
-      <b-nav-item exact-active-class="active" to="/Inscription"
-        >Inscription</b-nav-item
+      <router-link v-if="isConnected" :to="{ name: 'recipe-add' }"
+        >Ajouter une recette</router-link
       >
-      <b-nav-item exact-active-class="active" to="/Connexion"
-        >Connexion</b-nav-item
+      <router-link v-if="!isConnected" :to="{ name: 'connectionForm' }"
+        >Connexion</router-link
       >
-    </b-nav>
+    </nav>
   </footer>
 </template>
 
 <script>
 export default {
   name: "Footer",
-  data() {
-    return {
-      isConnected: true,
-    };
+  // les computed sont des data dont on réévalue la valeur à chaque appel de getters (https://vuex.vuejs.org/guide/getters.html#property-style-access)
+  computed: {
+    isConnected() {
+      // on récupère l'état de connexion (booléen) depuis le state
+      return this.$store.state.isUserConnected;
+    },
   },
 };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 @import "../assets/scss/colors.scss";
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: $mainBackgroundColor;
+  background-color: $colorHeader;
+  border-radius: 5px 5px 0 0;
+  &__nav {
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      color: $colorTextLight;
+      text-decoration: none;
+      margin-right: 1rem;
+      &.router-link-exact-active {
+        color: $colorLinkActive;
+      }
+    }
+  }
 }
 </style>

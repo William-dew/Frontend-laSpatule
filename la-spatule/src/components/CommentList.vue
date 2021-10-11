@@ -47,7 +47,7 @@ export default {
 <style lang="scss">
 @import "../assets/scss/colors.scss";
 .comment {
-  background-color: $backgroundColorComments;
+  background-color: $colorBackgroundCard;
   border-radius: 1rem;
   padding: 1rem;
 }

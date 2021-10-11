@@ -1,7 +1,7 @@
 <template>
-  <div id="app" class="d-flex flex-column min-vh-100">
+  <div>
     <Header />
-    <router-view></router-view>
+    <router-view />
     <Footer />
   </div>
 </template>
@@ -11,18 +11,10 @@ import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
 export default {
   components: { Header, Footer },
+  name: "App",
+
+  data: () => ({
+    //
+  }),
 };
 </script>
-
-<style lang="scss">
-@import "./assets/scss/fonts.scss";
-@import "./assets/scss/colors.scss";
-@import "./assets/scss/variables.scss";
-#app {
-  background-color: $mainBackgroundColor;
-  a {
-    text-decoration: none;
-    color: $textdark;
-  }
-}
-</style>
