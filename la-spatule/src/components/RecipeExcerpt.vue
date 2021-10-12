@@ -8,7 +8,19 @@
       :style="{
         backgroundImage: `url(${picture})`,
       }"
-    ></div>
+    >
+      <div class="excerpt__description">
+        <h4>{{ title }}</h4>
+        <div class="excerpt__note">*****</div>
+        <p>
+          {{ sousTitre }}
+        </p>
+        <p class="excerpt__date-author">
+          Ajoutée le <time :datetime="dateUTC">{{ date }}</time> par
+          <span>{{ author }}</span>
+        </p>
+      </div>
+    </div>
   </router-link>
 </template>
 
@@ -18,7 +30,6 @@ export default {
   props: {
     recipeId: {
       type: Number,
-      default: 20,
     },
     title: {
       type: String,
@@ -36,17 +47,60 @@ export default {
       type: String,
       default: "",
     },
+    dateUTC: {
+      type: Date,
+      default: "",
+    },
+    author: {
+      type: String,
+      default: "",
+    },
   },
 };
 </script>
 
 <style  scoped lang="scss">
+@import "../assets/scss/colors.scss";
+@import "../assets/scss/fonts.scss";
+
 .excerpt {
+  display: block;
   &__card {
     margin-bottom: 1rem;
-    height: 300px;
+    min-height: 300px;
     background-size: cover;
     border-radius: 10px;
+    position: relative;
+  }
+
+  &__note {
+    margin-left: 1rem;
+  }
+  &__description {
+    line-height: 1;
+    min-height: 100px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(255 255 255 / 75%);
+    h4 {
+      margin-left: 1rem;
+      color: $colorTextDark;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+    p {
+      margin-left: 1rem;
+      font-size: 0.8rem;
+    }
+  }
+  &__date-author {
+    font-style: italic;
+    span {
+      text-transform: capitalize;
+    }
   }
 }
 </style>

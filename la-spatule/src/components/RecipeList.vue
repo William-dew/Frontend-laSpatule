@@ -9,6 +9,8 @@
       :picture="recipe.featured_media_url"
       :date="recipe.formatted_date"
       :sous-titre="recipe.meta.sous_titre[0]"
+      :dateUTC="recipe.date"
+      :author="recipe.author_name"
     />
   </main>
 </template>
@@ -37,6 +39,9 @@ export default {
 h1 {
   text-align: center;
   font-weight: 900;
-  margin: 1rem;
+  margin-top: 60px;
+}
+a.excerpt:last-child {
+  margin-bottom: 3rem;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <nav class="footer__nav">
-      <router-link :to="{ name: 'homePage' }">Liste des recettes</router-link>
+      <router-link :to="{ name: 'homePage' }">Recettes</router-link>
       <router-link v-if="!isConnected" :to="{ name: 'register' }"
         >Inscription</router-link
       >
@@ -32,8 +32,14 @@ export default {
 .footer {
   background-color: $colorHeader;
   border-radius: 5px 5px 0 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0px -4px 10px 0px black;
+
   &__nav {
-    height: 2.5rem;
+    min-height: 2.5rem;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -37,6 +37,10 @@ export default {
   align-items: center;
   box-shadow: 0px 4px 10px 0px black;
   border-radius: 0 0 5px 5px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 
   &__title {
     color: $colorTextLight;
