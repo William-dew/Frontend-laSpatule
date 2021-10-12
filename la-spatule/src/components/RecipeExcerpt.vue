@@ -78,7 +78,7 @@ export default {
   }
   &__description {
     line-height: 1;
-    min-height: 100px;
+    min-height: 80px;
     position: absolute;
     width: 100%;
     bottom: 0;

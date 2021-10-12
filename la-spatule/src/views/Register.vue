@@ -1,120 +1,150 @@
 <template>
-  <div class="register p-3">
-    <h1>créer un compte</h1>
-
-    <b-form @submit.stop.prevent="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group label="Prénom" label-for="input-firstName" description="">
-        <b-form-input
-          id="firstName"
-          name="firstName"
-          v-model="form.firstName"
+  <form @submit.prevent="addUser">
+    <h1>inscription</h1>
+    <fieldset>
+      <div class="field">
+        <label class="field__label">Prénom</label>
+        <input
+          class="field__input"
           type="text"
-          placeholder="Votre prénom"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group label="Nom" label-for="input-name" description="">
-        <b-form-input
-          id="input-name"
-          v-model="form.name"
+          placeholder="Prénom"
+          v-model="user.firstName"
+        />
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="field">
+        <label class="field__label">Nom</label>
+        <input
+          class="field__input"
           type="text"
-          placeholder="Votre nom"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group label="Email" label-for="input-email" description="">
-        <b-form-input
-          id="input-email"
-          v-model="form.email"
+          placeholder="johndoe@ocooking.local"
+          v-model="user.name"
+        />
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="field">
+        <label class="field__label">E-mail</label>
+        <input
+          class="field__input"
           type="email"
-          placeholder="Votre Email"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group
-        label="Identifiant"
-        label-for="input-nickname"
-        description=""
-      >
-        <b-form-input
-          id="input-nickname"
-          v-model="form.nikename"
+          placeholder="johndoe@ocooking.local"
+          v-model="user.email"
+        />
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="field">
+        <label class="field__label">Identifiant</label>
+        <input
+          class="field__input"
           type="text"
-          placeholder="Votre identifiant"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group
-        label="Mot de passe"
-        label-for="input-password"
-        description=""
-      >
-        <b-form-input
-          id="input-password"
-          v-model="form.password"
+          placeholder="Saisissez votre identifiant"
+          v-model="user.identifiant"
+        />
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="field">
+        <label class="field__label">Mot de passe</label>
+        <input
+          class="field__input"
           type="password"
-          placeholder="Mot de passe"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group
-        label="Confirmez le mot de passe"
-        label-for="input-password-verify"
-        description=""
-      >
-        <b-form-input
-          id="input-password-verify"
-          v-model="form.passwordVerify"
+          placeholder=""
+          v-model="user.password"
+        />
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="field">
+        <label class="field__label">Confirmez votre mot de passe</label>
+        <input
+          class="field__input"
           type="password"
-          placeholder="Mot de passe"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <!-- <pre>{{ form }}</pre> -->
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
-    </b-form>
-  </div>
+          placeholder=""
+          v-model="user.email"
+        />
+      </div>
+    </fieldset>
+
+    <button class="button">Valider</button>
+  </form>
 </template>
+
 
 <script>
 export default {
   data() {
     return {
-      form: {
+      user: {
         firstName: "",
-        email: "",
         name: "",
-        nickname: "",
-        password: "",
-        passwordVerify: "",
+        email: "",
+        identifiant: "",
       },
-
-      show: true,
     };
   },
-  methods: {
-    onReset(event) {
-      event.preventDefault();
-      // Reset our form values
-      this.form.email = "";
-      this.form.name = "";
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
-    },
-  },
+  methods: {},
 };
 </script>
 
 
 <style lang="scss" scoped>
-input {
-  margin-bottom: 1rem;
+@import "../assets/scss/colors.scss";
+form {
+  fieldset {
+    border: none;
+
+    .field {
+      margin-bottom: 1rem;
+    }
+  }
 }
+
+.field {
+  display: flex;
+  flex: {
+    direction: column;
+    wrap: wrap;
+  }
+
+  &__label {
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  &__input {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: $primaryBackgroundColor;
+    margin-bottom: 1rem;
+  }
+
+  &__input:focus {
+    outline-color: $primaryStrongColor;
+    outline-width: 1px;
+  }
+}
+
+.button {
+  background-color: #42b983;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
 h1 {
   text-transform: uppercase;
+  margin: 4rem 0 1rem 0;
+  text-align: center;
+  font-size: 2rem;
 }
 </style>

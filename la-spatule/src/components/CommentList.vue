@@ -1,10 +1,10 @@
 <template>
-  <section class="comment mb-1">
-    <div>
-      Le <time :datetime="date">{{ date | formatDate }}</time> par
+  <section class="comment">
+    <div class="comment__date-author">
+      <time :datetime="date">{{ date | formatDate }}</time> par
       {{ author | capitalize }}
     </div>
-    <p v-html="comment"></p>
+    <p class="comment__content" v-html="comment"></p>
   </section>
 </template>
 
@@ -50,5 +50,9 @@ export default {
   background-color: $colorBackgroundCard;
   border-radius: 1rem;
   padding: 1rem;
+  margin-bottom: 0.5rem;
+  &__date-author {
+    margin-bottom: 0.3rem;
+  }
 }
 </style>

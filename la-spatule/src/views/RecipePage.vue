@@ -1,11 +1,15 @@
 <template>
-  <div class="p-1 mb-5">
+  <div class="recipe-page">
     <Recipe
       :title="recipeData.title.rendered"
       :imageUrl="recipeData.featured_media_url"
       :content="recipeData.content.rendered"
+      :tempsPreparation="recipeData.meta.temps_de_preparation[0]"
+      :tempsCuisson="recipeData.meta.temps_de_cuisson[0]"
+      :nombrePersonne="recipeData.meta.nombre_de_personne[0]"
+      :cout="recipeData.meta.cout[0]"
     />
-    <h2 class="display-6">Commentaires ({{ countComment() }})</h2>
+    <h3>Commentaires ({{ countComment() }})</h3>
 
     <comment-list
       v-for="comment in commentsList"
@@ -52,4 +56,14 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.recipe-page {
+  margin: 1rem;
+  h3 {
+    margin: 0.8rem 0 0.8rem 0;
+  }
+  .comment:last-child {
+    margin-bottom: 3.5rem;
+  }
+}
+</style>

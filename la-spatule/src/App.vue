@@ -19,4 +19,8 @@ export default {
 };
 </script>
 <style>
+body {
+  font-size: 0.8rem;
+  box-sizing: border-box;
+}
 </style>

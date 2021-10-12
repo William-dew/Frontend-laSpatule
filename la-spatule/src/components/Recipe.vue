@@ -1,17 +1,21 @@
 <template>
   <article class="recipe">
     <h1 class="display-4 text-center">{{ title }}</h1>
-    <img :src="imageUrl" :alt="`image de la recette ${title}`" />
+    <img
+      class="recipe__image"
+      :src="imageUrl"
+      :alt="`image de la recette ${title}`"
+    />
     <section class="recipe__metas">
       <ul>
-        <li>Préparation: 20mn</li>
-        <li>Cuisson: 45mn</li>
-        <li>personnes: 4</li>
-        <li>Cout: 15€</li>
+        <li>Préparation: {{ tempsPreparation }} mn</li>
+        <li>Cuisson: {{ tempsCuisson }} mn</li>
+        <li>personnes: {{ nombrePersonne }}</li>
+        <li>Cout: {{ cout }}€</li>
       </ul>
     </section>
     <section class="recipe__steps">
-      <h5>Préparation</h5>
+      <h3>Préparation</h3>
       <p v-html="content"></p>
     </section>
   </article>
@@ -33,11 +37,27 @@ export default {
       type: String,
       default: "",
     },
+    tempsPreparation: {
+      type: Number,
+      default: 0,
+    },
+    tempsCuisson: {
+      type: Number,
+      default: 0,
+    },
+    nombrePersonne: {
+      type: Number,
+      default: 0,
+    },
+    cout: {
+      type: Number,
+      default: 0,
+    },
   },
 };
 </script>
 export
-<style lang="scss">
+<style lang="scss" scoped>
 .recipe {
   &__metas {
     ul {
@@ -46,8 +66,10 @@ export
       list-style: none;
     }
   }
-}
-img {
-  width: 100%;
+
+  &__image {
+    max-width: 100%;
+    margin-top: 2rem;
+  }
 }
 </style>
