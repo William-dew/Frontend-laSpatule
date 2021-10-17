@@ -40,7 +40,7 @@ export default {
       default: "",
     },
     date: {
-      type: Date,
+      type: String,
       default: "",
     },
     sousTitre: {
@@ -48,7 +48,7 @@ export default {
       default: "",
     },
     dateUTC: {
-      type: Date,
+      type: String,
       default: "",
     },
     author: {

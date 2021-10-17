@@ -9,7 +9,6 @@
     />
     <section class="recipe__metas">
       <div>4,2 **** (51) 40mn</div>
-      <font-awesome-icon icon="fa-solid fa-minus" />
 
       <ul>
         <li>Préparation: {{ tempsPreparation }} mn</li>
@@ -42,20 +41,20 @@ export default {
       default: "",
     },
     tempsPreparation: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "0",
     },
     tempsCuisson: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "0",
     },
     nombrePersonne: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "0",
     },
     cout: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "0",
     },
     subTitle: {
       type: String,
