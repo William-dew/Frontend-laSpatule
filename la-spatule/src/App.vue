@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <Header />
     <router-view />
     <Footer />
@@ -19,8 +19,10 @@ export default {
 };
 </script>
 <style>
-body {
-  font-size: 0.8rem;
+@import "./assets/scss/fonts.scss";
+.app {
+  font-size: 1rem;
   box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
 }
 </style>

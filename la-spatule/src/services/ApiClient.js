@@ -1,7 +1,14 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "https://wdewailly.me/Backend-laSpatule/wp-json/wp/v2/",
+  baseURL: "https://wdewailly.me/Backend-laSpatule/",
 });
 
-export { apiClient };
+const baseUrlSuffix = "wp-json/wp/v2";
+const jwtSuffix = "wp-json/jwt-auth/v1";
+
+export {
+  apiClient,
+  baseUrlSuffix,
+  jwtSuffix
+};

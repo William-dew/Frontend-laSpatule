@@ -9,7 +9,7 @@ export default new Vuex.Store({
     username: localStorage.getItem('username')
   },
   mutations: {
-    isUserConnectedMutation(state, data) {
+    isUserConnected(state, data) {
       state.isUserConnected = data;
     },
     updateUsername(state, newUsername) {

@@ -1,12 +1,16 @@
 <template>
   <article class="recipe">
-    <h1 class="display-4 text-center">{{ title }}</h1>
+    <h1 class="recipe__title">{{ title }}</h1>
+    <h2 class="recipe__sub-title">{{ subTitle }}</h2>
     <img
       class="recipe__image"
       :src="imageUrl"
       :alt="`image de la recette ${title}`"
     />
     <section class="recipe__metas">
+      <div>4,2 **** (51) 40mn</div>
+      <font-awesome-icon icon="fa-solid fa-minus" />
+
       <ul>
         <li>Préparation: {{ tempsPreparation }} mn</li>
         <li>Cuisson: {{ tempsCuisson }} mn</li>
@@ -53,6 +57,10 @@ export default {
       type: Number,
       default: 0,
     },
+    subTitle: {
+      type: String,
+      default: "",
+    },
   },
 };
 </script>
@@ -69,7 +77,20 @@ export
 
   &__image {
     max-width: 100%;
-    margin-top: 2rem;
+  }
+
+  &__title {
+    margin: 4.5rem 0 0.2rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  &__sub-title {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 0.2rem;
   }
 }
 </style>

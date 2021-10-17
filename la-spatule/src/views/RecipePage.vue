@@ -8,6 +8,7 @@
       :tempsCuisson="recipeData.meta.temps_de_cuisson[0]"
       :nombrePersonne="recipeData.meta.nombre_de_personne[0]"
       :cout="recipeData.meta.cout[0]"
+      :subTitle="recipeData.meta.sous_titre[0]"
     />
     <h3>Commentaires ({{ countComment() }})</h3>
 
@@ -49,7 +50,7 @@ export default {
       return (this.commentsList = response.data);
     });
     RecipeService.getRecipe(this.$route.params.id).then((response) => {
-      console.log(response.data);
+      console.log("function get recipe" + response.data);
       return (this.recipeData = response.data);
     });
   },

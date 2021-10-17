@@ -8,6 +8,8 @@ import 'reset-css/reset.css';
 // import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
+
+
 Vue.config.productionTip = false;
 
 new Vue({

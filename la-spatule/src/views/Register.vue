@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="addUser">
-    <h1>inscription</h1>
+  <form @submit.prevent="addUser" class="registerForm">
+    <h1 class="registerForm__title">inscription</h1>
     <fieldset>
       <div class="field">
         <label class="field__label">Prénom</label>
@@ -82,7 +82,9 @@ export default {
         name: "",
         email: "",
         identifiant: "",
+        password: "",
       },
+      passwordConfirmation: "",
     };
   },
   methods: {},
@@ -92,7 +94,14 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/scss/colors.scss";
-form {
+.registerForm {
+  &__title {
+    margin: 5rem 0 2rem 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
   fieldset {
     border: none;
 
@@ -123,7 +132,7 @@ form {
   }
 
   &__input:focus {
-    outline-color: $primaryStrongColor;
+    outline-color: purple;
     outline-width: 1px;
   }
 }
@@ -135,16 +144,10 @@ form {
   cursor: pointer;
   font-size: 1rem;
   padding: 0.5rem 1rem;
+  margin-bottom: 3.5rem;
 
   &:hover {
     color: #fff;
   }
-}
-
-h1 {
-  text-transform: uppercase;
-  margin: 4rem 0 1rem 0;
-  text-align: center;
-  font-size: 2rem;
 }
 </style>

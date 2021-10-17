@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <h1>RECETTES</h1>
+  <div class="recipeList">
+    <h1 class="recipeList__title">RECETTES</h1>
     <recipe-excerpt
       v-for="recipe in recipeListData"
       :key="recipe.id"
@@ -12,7 +12,7 @@
       :dateUTC="recipe.date"
       :author="recipe.author_name"
     />
-  </main>
+  </div>
 </template>
 
 <script>
@@ -36,10 +36,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h1 {
-  text-align: center;
-  font-weight: 900;
-  margin-top: 60px;
+.recipeList {
+  &__title {
+    margin: 5rem 0 1rem 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
 }
 a.excerpt:last-child {
   margin-bottom: 3rem;
