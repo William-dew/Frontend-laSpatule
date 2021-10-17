@@ -10,7 +10,7 @@
       }"
     >
       <div class="excerpt__description">
-        <h4>{{ title }}</h4>
+        <h3>{{ title }}</h3>
         <div class="excerpt__note">*****</div>
         <p>
           {{ sousTitre }}
@@ -84,16 +84,16 @@ export default {
     bottom: 0;
     border-radius: 0 0 10px 10px;
     background-color: rgb(255 255 255 / 75%);
-    h4 {
+    h3 {
       margin-left: 1rem;
       color: $colorTextDark;
       text-transform: uppercase;
       font-weight: 700;
-      margin-bottom: 0;
+      margin: 1rem 0 0 1rem;
+      font-size: 1.2rem;
     }
     p {
       margin-left: 1rem;
-      font-size: 0.8rem;
     }
   }
   &__date-author {

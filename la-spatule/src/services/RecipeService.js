@@ -1,11 +1,14 @@
-import { apiClient } from "./ApiClient";
+import {
+  apiClient,
+  baseUrlSuffix
+} from "./ApiClient";
 // import router from '../router'
 
 export default {
   getRecipeList: function () {
-    return apiClient.get("recipe");
+    return apiClient.get(`${baseUrlSuffix}/recipe`);
   },
   getRecipe: function (id) {
-    return apiClient.get("recipe/" + id);
+    return apiClient.get(`${baseUrlSuffix}/recipe/${id}`);
   },
 };

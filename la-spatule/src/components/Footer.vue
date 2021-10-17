@@ -5,7 +5,7 @@
       <router-link v-if="!isConnected" :to="{ name: 'register' }"
         >Inscription</router-link
       >
-      <router-link v-if="isConnected" :to="{ name: 'recipe-add' }"
+      <router-link v-if="isConnected" :to="{ name: 'recipeAdd' }"
         >Ajouter une recette</router-link
       >
       <router-link v-if="!isConnected" :to="{ name: 'connectionForm' }"

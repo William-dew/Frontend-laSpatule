@@ -1,44 +1,42 @@
 <template>
-  <!-- <button @click="sayCoucou">Coucou</button> -->
-  <form @submit.prevent="loginUser">
-    <fieldset>
-      <div class="field">
-        <label class="field__label">Adresse e-mail</label>
-        <input
-          class="field__input"
-          type="text"
-          placeholder="johndoe@ocooking.local"
-          v-model="emailValue"
-        />
-      </div>
-      <div class="field">
-        <label class="field__label">Mot de passe</label>
-        <input
-          class="field__input"
-          type="password"
-          placeholder="Mot de passe"
-          v-model="passwordValue"
-        />
-      </div>
-    </fieldset>
-    <button class="button">Connexion</button>
-  </form>
+  <div class="connection">
+    <h1 class="connection__title">CONNEXION</h1>
+    <form @submit.prevent="loginUser">
+      <fieldset>
+        <div class="field">
+          <label class="field__label">Identifiant</label>
+          <input
+            class="field__input"
+            type="text"
+            placeholder="votre identifiant"
+            v-model="usernameValue"
+          />
+        </div>
+        <div class="field">
+          <label class="field__label">Mot de passe</label>
+          <input
+            class="field__input"
+            type="password"
+            placeholder="Mot de passe"
+            v-model="passwordValue"
+          />
+        </div>
+      </fieldset>
+      <button class="button">Connexion</button>
+    </form>
+  </div>
 </template>
 
 <script>
 import AuthenticationService from "../services/AuthenticationService";
 export default {
-  data: function () {
+  data() {
     return {
-      counter: 0,
-      emailValue: "",
+      usernameValue: "",
       passwordValue: "",
     };
   },
   methods: {
-    sayCoucou() {
-      console.log("coucou");
-    },
     loginUser() {
       // on souhaite ici connecter un utilisateur
       // (on va déléguer une partie du travail à un service)
@@ -50,9 +48,8 @@ export default {
       // Permet de récupérer un token depuis l'API à partir des infos du formulaire de login
       // - Une fois le token récupéré => on le stock dans le localStorage
       // Permet de supprimer le token du localStorage pour déconnecter l'utilisateur
-      console.log(this.emailValue);
-      console.log(this.passwordValue);
-      AuthenticationService.loginUser(this.emailValue, this.passwordValue);
+
+      AuthenticationService.loginUser(this.usernameValue, this.passwordValue);
     },
   },
 };
@@ -60,4 +57,38 @@ export default {
 
 <style lang="scss">
 @import "../assets/scss/colors";
+.field {
+  display: flex;
+  flex: {
+    direction: column;
+    wrap: wrap;
+  }
+
+  &__label {
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  &__input {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: $primaryBackgroundColor;
+    margin-bottom: 1rem;
+  }
+
+  &__input:focus {
+    outline-color: $primaryStrongColor;
+    outline-width: 1px;
+  }
+}
+
+.connection {
+  &__title {
+    margin: 5rem 0 2rem 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+}
 </style>
