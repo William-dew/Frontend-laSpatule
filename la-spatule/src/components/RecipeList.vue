@@ -11,6 +11,7 @@
       :sous-titre="recipe.meta.sous_titre[0]"
       :dateUTC="recipe.date"
       :author="recipe.author_name"
+      :type="recipe.type_recipe"
     />
   </div>
 </template>
