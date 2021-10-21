@@ -9,8 +9,6 @@
     />
     <section class="recipe__metas">
       <div>4,2 **** (51) 40mn</div>
-      <font-awesome-icon icon="fa-solid fa-minus" />
-
       <ul>
         <li>Préparation: {{ tempsPreparation }} mn</li>
         <li>Cuisson: {{ tempsCuisson }} mn</li>
@@ -84,6 +82,7 @@ export
     font-size: 1.5rem;
     text-align: center;
     font-weight: bold;
+    text-transform: uppercase;
   }
   &__sub-title {
     font-size: 1rem;

@@ -80,14 +80,15 @@
         @change="handleChange($event)"
       />
     </div>
-    <div class="field">
-      <label class="field__label">Type de plat</label>
-      <select v-model="recipe.type_recipe" name="type" id="">
-        <option value="Dessert">dessert</option>
+    <div class="select-recipe-type">
+      <label for="recipeType">Type de recette</label>
+      <select name="recipeType" id="recipeType" v-model="recipe.recipe_type">
+        <option v-for="type in recipeTypes" :key="type.id" :value="type.id">
+          {{ type.name }}
+        </option>
       </select>
     </div>
     <pre>{{ recipe }}</pre>
-
     <button class="button">Soumettre</button>
   </form>
 </template>
@@ -99,23 +100,26 @@ export default {
   data() {
     return {
       recipe: { status: "pending", meta: {} },
+      recipeTypes: [],
     };
   },
   methods: {
     addRecipe() {
       RecipeService.uploadPictureFeatured(this.recipe)
         .then((response) => {
-          console.log(response);
           this.recipe.featured_media = response.data.id;
-          console.log(this.recipe);
           RecipeService.createRecipe(this.recipe);
-          console.log("recette crée");
         })
         .catch((error) => console.log(error));
     },
     handleChange($event) {
       this.recipe.pictureFeatured = $event.target.files[0];
     },
+  },
+  created() {
+    RecipeService.getRecipeType().then((response) => {
+      this.recipeTypes = response.data;
+    });
   },
 };
 </script>

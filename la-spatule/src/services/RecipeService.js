@@ -11,6 +11,9 @@ export default {
   getRecipe: function (id) {
     return apiClient.get(`${baseUrlSuffix}/recipe/${id}`);
   },
+  getRecipeType() {
+    return apiClient.get(`${baseUrlSuffix}/recipe_type`);
+  },
   uploadPictureFeatured(recipe) {
     const data = new FormData();
     data.append('file', recipe.pictureFeatured);
@@ -29,5 +32,4 @@ export default {
       },
     })
   },
-
 };
