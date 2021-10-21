@@ -44,6 +44,9 @@ export default {
         localStorage.removeItem('username')
         store.commit('updateUsername', '')
         store.commit('isUserConnected', false)
+        router.push({
+            name: 'homePage'
+        })
     }
 
 
