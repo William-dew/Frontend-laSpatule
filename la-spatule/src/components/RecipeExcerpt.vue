@@ -10,7 +10,9 @@
       }"
     >
       <div class="excerpt__description">
-        <h3>{{ title }}</h3>
+        <h3 class="excerpt__title">
+          {{ title }}<span class="excerpt__type">{{ type }}</span>
+        </h3>
         <div class="excerpt__note">*****</div>
         <p>
           {{ sousTitre }}
@@ -40,7 +42,7 @@ export default {
       default: "",
     },
     date: {
-      type: Date,
+      type: String,
       default: "",
     },
     sousTitre: {
@@ -48,10 +50,14 @@ export default {
       default: "",
     },
     dateUTC: {
-      type: Date,
+      type: String,
       default: "",
     },
     author: {
+      type: String,
+      default: "",
+    },
+    type: {
       type: String,
       default: "",
     },
@@ -84,17 +90,30 @@ export default {
     bottom: 0;
     border-radius: 0 0 10px 10px;
     background-color: rgb(255 255 255 / 75%);
-    h3 {
-      margin-left: 1rem;
-      color: $colorTextDark;
-      text-transform: uppercase;
-      font-weight: 700;
-      margin: 1rem 0 0 1rem;
-      font-size: 1.2rem;
-    }
+
     p {
       margin-left: 1rem;
     }
+  }
+  &__type {
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0 1rem;
+    border: solid black 1px;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    background-color: coral;
+  }
+  &__title {
+    display: flex;
+    margin-left: 1rem;
+    color: $colorTextDark;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 1rem 0 0 1rem;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
   }
   &__date-author {
     font-style: italic;

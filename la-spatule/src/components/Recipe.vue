@@ -40,20 +40,20 @@ export default {
       default: "",
     },
     tempsPreparation: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "0",
     },
     tempsCuisson: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "0",
     },
     nombrePersonne: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "0",
     },
     cout: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "0",
     },
     subTitle: {
       type: String,

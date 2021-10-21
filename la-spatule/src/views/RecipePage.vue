@@ -11,7 +11,6 @@
       :subTitle="recipeData.meta.sous_titre[0]"
     />
     <h3>Commentaires ({{ countComment() }})</h3>
-
     <comment-list
       v-for="comment in commentsList"
       :key="comment.id"
@@ -19,8 +18,7 @@
       :author="comment.author_name"
       :date="comment.date"
     />
-    <!-- <pre>{{ recipeData }}</pre>
-    <pre>{{ commentsList }}</pre> -->
+    <comment-form v-if="isConnected" :recetteID="recipeData.id" />
   </div>
 </template>
 
@@ -29,8 +27,9 @@ import CommentList from "../components/CommentList.vue";
 import Recipe from "../components/Recipe.vue";
 import RecipeService from "../services/RecipeService";
 import CommentService from "../services/CommentService";
+import CommentForm from "../components/CommentForm.vue";
 export default {
-  components: { Recipe, CommentList },
+  components: { Recipe, CommentList, CommentForm },
   name: "RecipePage",
   data() {
     return {
@@ -39,6 +38,12 @@ export default {
       nomImageAlt: "",
     };
   },
+  computed: {
+    isConnected() {
+      // on récupère l'état de connexion (booléen) depuis le state
+      return this.$store.state.isUserConnected;
+    },
+  },
   methods: {
     countComment() {
       return this.commentsList.length;
@@ -46,11 +51,9 @@ export default {
   },
   created: function () {
     CommentService.getCommentList(this.$route.params.id).then((response) => {
-      console.log(response.data);
       return (this.commentsList = response.data);
     });
     RecipeService.getRecipe(this.$route.params.id).then((response) => {
-      console.log("function get recipe" + response.data);
       return (this.recipeData = response.data);
     });
   },
