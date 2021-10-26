@@ -1,6 +1,7 @@
 import {
     apiClient,
-    jwtSuffix
+    jwtSuffix,
+    baseUrlSuffix
 } from "./ApiClient";
 import router from "../router";
 import store from "../store";
@@ -30,6 +31,8 @@ export default {
                     router.push({
                         name: 'homePage'
                     })
+                    this.isConnected();
+
                 } else {
                     alert('Mauvais identifiants !')
                 }
@@ -37,8 +40,29 @@ export default {
             .catch((error) => {
                 console.log(error)
             })
-        this.isConnected();
     },
+
+    isConnected() {
+        console.log('on regarde si je suis connecté')
+        // si on a un token en localStorage
+        if (localStorage.getItem('token')) {
+            console.log('utilisateur potentiellement connecté');
+            // on vérifie ce token avec l'API
+            // on return la promesse
+            apiClient.post(jwtSuffix + '/token/validate', {}, {
+                    // permet d'ajouter le header Authentication à la requête
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                .then(response => {
+                    store.commit('isUserConnected', response.data.success)
+                })
+        } else {
+            store.commit('isUserConnected', false);
+        }
+    },
+
     disconnectUser() {
         localStorage.removeItem('token')
         localStorage.removeItem('username')
@@ -47,7 +71,12 @@ export default {
         router.push({
             name: 'homePage'
         })
+    },
+    registerUser(user) {
+        apiClient.post(`${baseUrlSuffix}/users/register`, user)
+            .then(() => {
+                this.loginUser(user.username, user.password)
+            })
+            .catch(error => console.log(error, user))
     }
-
-
 }

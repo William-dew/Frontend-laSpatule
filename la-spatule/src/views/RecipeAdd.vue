@@ -88,13 +88,13 @@
         </option>
       </select>
     </div>
-    <pre>{{ recipe }}</pre>
     <button class="button">Soumettre</button>
   </form>
 </template>
 
 
 <script>
+import AuthenticationService from "../services/AuthenticationService";
 import RecipeService from "../services/RecipeService";
 export default {
   data() {
@@ -105,6 +105,7 @@ export default {
   },
   methods: {
     addRecipe() {
+      AuthenticationService.isConnected();
       RecipeService.uploadPictureFeatured(this.recipe)
         .then((response) => {
           this.recipe.featured_media = response.data.id;

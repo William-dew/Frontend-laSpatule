@@ -3,23 +3,12 @@
     <h1 class="registerForm__title">inscription</h1>
     <fieldset>
       <div class="field">
-        <label class="field__label">Prénom</label>
+        <label class="field__label">Identifiant</label>
         <input
           class="field__input"
           type="text"
-          placeholder="Prénom"
-          v-model="user.firstName"
-        />
-      </div>
-    </fieldset>
-    <fieldset>
-      <div class="field">
-        <label class="field__label">Nom</label>
-        <input
-          class="field__input"
-          type="text"
-          placeholder="johndoe@ocooking.local"
-          v-model="user.name"
+          placeholder="Saisissez votre identifiant"
+          v-model="user.username"
         />
       </div>
     </fieldset>
@@ -34,17 +23,7 @@
         />
       </div>
     </fieldset>
-    <fieldset>
-      <div class="field">
-        <label class="field__label">Identifiant</label>
-        <input
-          class="field__input"
-          type="text"
-          placeholder="Saisissez votre identifiant"
-          v-model="user.identifiant"
-        />
-      </div>
-    </fieldset>
+
     <fieldset>
       <div class="field">
         <label class="field__label">Mot de passe</label>
@@ -63,7 +42,7 @@
           class="field__input"
           type="password"
           placeholder=""
-          v-model="user.email"
+          v-model="passwordConfirmation"
         />
       </div>
     </fieldset>
@@ -74,20 +53,24 @@
 
 
 <script>
+import AuthenticationService from "../services/AuthenticationService";
 export default {
   data() {
     return {
-      user: {
-        firstName: "",
-        name: "",
-        email: "",
-        identifiant: "",
-        password: "",
-      },
+      user: { role: "recipe-contributor" },
       passwordConfirmation: "",
     };
   },
-  methods: {},
+  methods: {
+    addUser() {
+      if (this.passwordConfirmation === this.user.password) {
+        AuthenticationService.registerUser(this.user);
+        console.log("utilisateur enregistré", this.user);
+      } else {
+        alert("error, validation mot de passe échouée");
+      }
+    },
+  },
 };
 </script>
 
@@ -110,14 +93,12 @@ export default {
     }
   }
 }
-
 .field {
   display: flex;
   flex: {
     direction: column;
     wrap: wrap;
   }
-
   &__label {
     margin-bottom: 0.5rem;
     text-align: left;
