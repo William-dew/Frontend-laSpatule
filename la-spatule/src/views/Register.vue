@@ -51,13 +51,12 @@
   </form>
 </template>
 
-
 <script>
 import AuthenticationService from "../services/AuthenticationService";
 export default {
   data() {
     return {
-      user: { role: "recipe-contributor" },
+      user: { role: "recipe-contributor", email: "" },
       passwordConfirmation: "",
     };
   },
@@ -65,7 +64,6 @@ export default {
     addUser() {
       if (this.passwordConfirmation === this.user.password) {
         AuthenticationService.registerUser(this.user);
-        console.log("utilisateur enregistré", this.user);
       } else {
         alert("error, validation mot de passe échouée");
       }
@@ -73,7 +71,6 @@ export default {
   },
 };
 </script>
-
 
 <style lang="scss" scoped>
 @import "../assets/scss/colors.scss";

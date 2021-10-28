@@ -65,7 +65,7 @@ export default {
 };
 </script>
 
-<style  scoped lang="scss">
+<style scoped lang="scss">
 @import "../assets/scss/colors.scss";
 @import "../assets/scss/fonts.scss";
 

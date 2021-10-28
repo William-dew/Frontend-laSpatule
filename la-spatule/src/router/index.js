@@ -4,7 +4,8 @@ import HomePage from "../views/HomePage.vue";
 
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+  {
     path: "/",
     name: "homePage",
     component: HomePage,

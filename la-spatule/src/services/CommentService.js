@@ -1,7 +1,4 @@
-import {
-  apiClient,
-  baseUrlSuffix
-} from "./ApiClient";
+import { apiClient, baseUrlSuffix } from "./ApiClient";
 
 import router from "../router";
 
@@ -12,17 +9,24 @@ export default {
 
   createComment(id, comment) {
     return apiClient
-      .post(`${baseUrlSuffix}/comments?post=${id}`, {
-        "content": comment
-      }, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
+      .post(
+        `${baseUrlSuffix}/comments?post=${id}`,
+        {
+          content: comment,
         },
-      }).then(router.push({
-        path: '/'
-      }))
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      )
+      .then(
+        router.push({
+          path: "/",
+        })
+      )
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
   },
 };

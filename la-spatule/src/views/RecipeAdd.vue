@@ -92,7 +92,6 @@
   </form>
 </template>
 
-
 <script>
 import AuthenticationService from "../services/AuthenticationService";
 import RecipeService from "../services/RecipeService";

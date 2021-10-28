@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     isUserConnected: false,
-    username: localStorage.getItem('username')
+    username: localStorage.getItem("username"),
   },
   mutations: {
     isUserConnected(state, data) {
@@ -14,7 +14,7 @@ export default new Vuex.Store({
     },
     updateUsername(state, newUsername) {
       state.username = newUsername;
-    }
+    },
   },
   actions: {},
   modules: {},
