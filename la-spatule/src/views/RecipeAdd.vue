@@ -73,16 +73,22 @@
       </div>
     </fieldset>
     <div class="field">
-      <label class="field__label">choisir une image</label>
+      <label for="file" class="field__label">choisir une image</label>
       <input
+        id="file"
         class="field__input recipe-add__button-input-file"
         type="file"
         @change="handleChange($event)"
       />
     </div>
-    <div class="select-recipe-type">
-      <label for="recipeType">Type de recette</label>
-      <select name="recipeType" id="recipeType" v-model="recipe.recipe_type">
+    <div class="field select-recipe-type">
+      <label class="field__label" for="recipeType">Type de recette</label>
+      <select
+        class="field__input"
+        name="recipeType"
+        id="recipeType"
+        v-model="recipe.recipe_type"
+      >
         <option v-for="type in recipeTypes" :key="type.id" :value="type.id">
           {{ type.name }}
         </option>
@@ -109,6 +115,8 @@ export default {
         .then((response) => {
           this.recipe.featured_media = response.data.id;
           RecipeService.createRecipe(this.recipe);
+          console.log(this.recipe);
+          alert("recette en attente d'approbation par le cuisinier");
         })
         .catch((error) => console.log(error));
     },
@@ -144,6 +152,8 @@ export default {
     font-weight: bold;
     font-size: 1.5rem;
     text-transform: uppercase;
+  }
+  &__button-input-file {
   }
   fieldset {
     border: none;

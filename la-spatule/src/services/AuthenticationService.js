@@ -35,8 +35,6 @@ export default {
       });
   },
 
-
-
   isConnected() {
     console.log("on regarde si je suis connecté");
     // si on a un token en localStorage
@@ -47,11 +45,11 @@ export default {
       apiClient
         .post(
           jwtSuffix + "/token/validate", {}, {
-          // permet d'ajouter le header Authentication à la requête
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
+            // permet d'ajouter le header Authentication à la requête
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
         )
         .then((response) => {
           store.commit("isUserConnectedMutation", response.data.success);
@@ -64,6 +62,7 @@ export default {
   disconnectUser() {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    alert(`A bientôt ${store.state.username}`)
     store.commit("updateUsername", "");
     store.commit("isUserConnectedMutation", false);
     router.push({
@@ -75,7 +74,6 @@ export default {
       .post(`${baseUrlSuffix}/users/register`, user)
       .then(() => {
         this.loginUser(user.username, user.password)
-        })
-      
+      })
   },
 }

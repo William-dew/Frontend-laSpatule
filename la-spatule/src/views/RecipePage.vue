@@ -4,11 +4,11 @@
       :title="recipeData.title.rendered"
       :imageUrl="recipeData.featured_media_url"
       :content="recipeData.content.rendered"
-      :tempsPreparation="recipeData.meta.temps_de_preparation[0]"
-      :tempsCuisson="recipeData.meta.temps_de_cuisson[0]"
-      :nombrePersonne="recipeData.meta.nombre_de_personne[0]"
-      :cout="recipeData.meta.cout[0]"
-      :subTitle="recipeData.meta.sous_titre[0]"
+      :tempsPreparation="recipeData.meta.temps_de_preparation"
+      :tempsCuisson="recipeData.meta.temps_de_cuisson"
+      :nombrePersonne="recipeData.meta.nombre_de_personne"
+      :cout="recipeData.meta.cout"
+      :subTitle="recipeData.meta.sous_titre"
     />
     <h3>Commentaires ({{ countComment() }})</h3>
     <comment-list

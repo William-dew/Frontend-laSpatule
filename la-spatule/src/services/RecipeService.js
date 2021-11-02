@@ -1,4 +1,8 @@
-import { apiClient, baseUrlSuffix } from "./ApiClient";
+import router from "../router";
+import {
+  apiClient,
+  baseUrlSuffix
+} from "./ApiClient";
 // import router from '../router'
 
 export default {
@@ -26,6 +30,8 @@ export default {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-    });
+    }).then(() => router.push({
+      "name": "homePage"
+    }));
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <form
     form
-    @submit.prevent="sendComment(recetteID, comment)"
+    @submit.prevent="sendComment(recetteID, comment, note)"
     class="comment-form"
   >
     <label for="comment_input">Laisser un commentaire</label>
@@ -11,7 +11,20 @@
       id="comment_input"
       rows="10"
       v-model="comment"
+      required
     ></textarea>
+    <div class="comment-form__note">
+      <label for="note">Note 0 - 5 </label>
+      <input
+        min="0"
+        max="5"
+        v-model.number="note"
+        id="note"
+        type="number"
+        required
+      />
+    </div>
+
     <button class="comment-form__button">valider</button>
   </form>
 </template>
@@ -28,11 +41,12 @@ export default {
   data() {
     return {
       comment: "",
+      note: "",
     };
   },
   methods: {
-    sendComment(recipeID, comment) {
-      CommentService.createComment(recipeID, comment);
+    sendComment(recipeID, comment, note) {
+      CommentService.createComment(recipeID, comment, note);
     },
   },
 };
@@ -54,6 +68,11 @@ export default {
     border: none;
     display: block;
     padding: 1rem;
+  }
+  &__note {
+    margin-top: 1rem;
+    border-radius: 1rem;
+    background-color: $colorBackgroundCard;
   }
 }
 </style>

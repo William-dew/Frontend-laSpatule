@@ -8,7 +8,7 @@
       :title="recipe.title.rendered"
       :picture="recipe.featured_media_url"
       :date="recipe.formatted_date"
-      :sous-titre="recipe.meta.sous_titre[0]"
+      :sous-titre="recipe.meta.sous_titre"
       :dateUTC="recipe.date"
       :author="recipe.author_name"
       :type="recipe.type_recipe"

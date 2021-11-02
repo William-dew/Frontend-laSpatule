@@ -6,5 +6,11 @@ const apiClient = axios.create({
 
 const baseUrlSuffix = "wp-json/wp/v2";
 const jwtSuffix = "wp-json/jwt-auth/v1";
+const customEndpointSuffix = "wp-json/laspatule/v1/note"
 
-export { apiClient, baseUrlSuffix, jwtSuffix };
+export {
+  apiClient,
+  baseUrlSuffix,
+  jwtSuffix,
+  customEndpointSuffix
+};
